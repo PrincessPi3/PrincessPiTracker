@@ -55,6 +55,12 @@
 
 // This is the advertisement key / EID. Change it to your own EID.
 const char *eid_string = CONFIG_ADVERTISEMENT_KEY;
+// // This is the advertisement key / EID. Change it to your own EID.
+// const char *eid_string = CONFIG_ADVERTISEMENT_KEY;
+// #define EID_STRING_LENGTH STRLENT((CONFIG_ADVERTISEMENT_KEY))
+// #if EID_STRING_LENGTH != 40
+//     #error "EID string must be 40 hexadecimal characters (20 bytes)"
+// #endif
 
 // Find My Device Network (FMDN) advertisement
 // Octet 	Value 	        Description
@@ -224,7 +230,6 @@ void app_main() {
     ESP_LOGD(TAG, "Advertisement Key (EID): \"%s\"\n", eid_string);
 
     // interval infors
-    ESP_LOGI(TAG, "length: %d", length);
     ESP_LOGI(TAG, "Advertisement Calculated Interval Cycles: %d cycles\n", ADVERTISE_INTERVAL_MIN);
     ESP_LOGI(TAG, "Advertisement Interval Min: %d Milliseconds\n", CONFIG_ADVERTISEMENT_INTERVAL);
     ESP_LOGI(TAG, "Advertisement Interval Max: %d Milliseconds (%d ms jitter)\n", CONFIG_ADVERTISEMENT_INTERVAL + CONFIG_ADVERTISEMENT_INTERVAL_JITTER_MS, CONFIG_ADVERTISEMENT_INTERVAL_JITTER_MS);
