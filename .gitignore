@@ -8,3 +8,4 @@ sdkconfig
 *~
 *.vscode
 dependencies.lock
+secrets.json

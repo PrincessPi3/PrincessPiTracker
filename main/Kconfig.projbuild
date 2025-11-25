@@ -44,7 +44,7 @@ menu "GoogleFindMyTools Config"
 
     config DEEP_SLEEP_BURST_COUNT
         int "Number of Advertisements per Burst"
-        default 5
+        default 3
         range 1 100
         depends on DEEP_SLEEP_BURST_MODE
         help
