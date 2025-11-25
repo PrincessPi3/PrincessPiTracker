@@ -210,7 +210,6 @@ static void deep_sleep_wait_to_sleep() {
     ESP_ERROR_CHECK(esp_sleep_enable_timer_wakeup(DEEP_SLEEP_BURST_DELAY_MICROS));
     esp_deep_sleep_start();
 }
-
 #endif
 #endif
 

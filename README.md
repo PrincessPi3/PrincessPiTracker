@@ -1,3 +1,10 @@
+# PrincessPiTracker
+**here be dragons**  
+btle tracking via esp32 but with more support for chips, more options, radical power shaving and nun of da suck  
+  
+i hvae become one with the build system, the toolchain, the sdk :Scuffled_Flustered: the ephmeral metaphysicaL Cconcept of esp-idf has adopted me as one of its own i shall soon know the true name of compuilauion
+
+# Original reaDME below
 # Find My Device ESP32 Firmware
 This code enables you to use an ESP32-device as a custom Google Find My Device tracker. Note that the firmware is very experimental. 
 
