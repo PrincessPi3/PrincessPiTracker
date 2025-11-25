@@ -1,0 +1,60 @@
+menu "GoogleFindMyTools Config"
+    config ADVERTISEMENT_INTERVAL
+        int "Interval between advertisements in milliseconds"
+        default 10240
+        range 12 10240
+        help
+            Int number of milliseconds (ms) in between advertisements min 12 max 1240
+
+    config ADVERTISEMENT_INTERVAL_JITTER_MS
+        int "Max Jitter to add to Advertisement Interval in milliseconds"
+        default 0
+        range 0 500
+        help
+            Int number of milliseconds (ms) max jitter to add to advertisement interval min 0 max 2000
+    
+    config ADVERTISEMENT_KEY
+        string "Your Advertisement Key"
+        default ""
+        help
+           Your advertisement key, see https://github.com/leonboe1/GoogleFindMyTools
+
+    config DEVICE_NAME
+        string "BLE Device Name"
+        default "PrincesiPiTracker"
+        help
+           The Bluetooth device name that will be broadcasted.
+
+    config TAG
+        string "Logging Tag"
+        default "PrincessPiTracker"
+        help
+           The tag used in logging messages.
+    config RANDOM_MAC_ADDRESS
+        bool "Use Random MAC Address"
+        default n
+        help
+           Enable this option to use a random MAC address for BLE advertising instead of the public MAC address.
+    
+    config DEEP_SLEEP_BURST_MODE
+        bool "Enable Deep Sleep Burst Mode"
+        default n
+        help
+           Enable this option to wake up, send multiple advertisements in a burst, then go back to deep sleep.
+
+    config DEEP_SLEEP_BURST_COUNT
+        int "Number of Advertisements per Burst"
+        default 5
+        range 1 100
+        depends on DEEP_SLEEP_BURST_MODE
+        help
+            Int number of advertisements to send per burst min 1 max 100
+
+    config DEEP_SLEEP_DURATION_S
+        int "Deep Sleep Duration in seconds"
+        default 60
+        range 0 86400
+        depends on DEEP_SLEEP_BURST_MODE
+        help
+            Int number of seconds (s) to deep sleep between advertisement cycles min 0 max 86400 (24 hours)
+endmenu

@@ -1,0 +1,13 @@
+# manually created
+# bootloader too big for sum fuckin reason on esp32 only so now we optimize this one alone for space and not size
+## gotta disable the performance one and enable da size one for safety
+CONFIG_BOOTLOADER_COMPILER_OPTIMIZATION_PERF=n
+CONFIG_BOOTLOADER_COMPILER_OPTIMIZATION_SIZE=y
+
+CONFIG_ESPTOOLPY_FLASHFREQ_20M=y
+CONFIG_ESPTOOLPY_HEADER_FLASHSIZE_UPDATE=y
+CONFIG_BT_BTU_TASK_STACK_SIZE=4096
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_80=y
+CONFIG_LWIP_TCP_SND_BUF_DEFAULT=5744
+CONFIG_LWIP_TCP_WND_DEFAULT=5744
+CONFIG_LWIP_HOOK_IP6_INPUT_NONE=y

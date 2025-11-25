@@ -1,0 +1,10 @@
+build/
+sdkconfig
+*.local
+*.tmp
+*.old
+*.bak*
+*.csv
+*~
+*.vscode
+dependencies.lock
