@@ -217,6 +217,15 @@ static void deep_sleep_wait_to_sleep() {
 #endif
 
 void app_main() {
+    // delay to make shit to actually fookin work holy shit fuck you asshole bitch
+    // i spit on you
+    // i spit on your mom
+    // if your mom is dead i spit on her grave
+    // shame
+    // shame
+    // anus
+    vTaskDelay(pdMS_TO_TICKS(CONFIG_STARTUP_DELAY_MS));
+
     // validate eid_string length
     const size_t length = strlen(eid_string);
     if (length == 0) {
