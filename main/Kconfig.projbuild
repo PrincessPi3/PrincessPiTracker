@@ -1,7 +1,7 @@
-menu "GoogleFindMyTools Config"
+menu "PrincessPiTracker Config"
     config ADVERTISEMENT_INTERVAL
         int "Interval between advertisements in milliseconds"
-        default 10240
+        default 10230
         range 12 10240
         help
             Int number of milliseconds (ms) in between advertisements min 12 max 1240

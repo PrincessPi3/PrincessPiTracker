@@ -9,9 +9,10 @@
 #if CONFIG_DEEP_SLEEP_BURST_MODE
 #include "soc/soc_caps.h"  // malloc and shit if lmao
 #include "esp_sleep.h"     // For deep sleep functions
-#include "freertos/FreeRTOS.h"
+#include "freertos/FreeRTOS.h" // freertosbullshit
 #include "freertos/task.h"
 
+// calculate da burst delay and burst delay microseconds
 #define DEEP_SLEEP_BURST_DELAY (CONFIG_DEEP_SLEEP_BURST_COUNT * CONFIG_ADVERTISEMENT_INTERVAL)
 #define DEEP_SLEEP_BURST_DELAY_MICROS (CONFIG_DEEP_SLEEP_DURATION_S * 1000000)
 #endif
@@ -22,6 +23,7 @@
 // handle da minutes config and round to da nearest integer
 #define ADVERTISE_INTERVAL_MIN ROUND((CONFIG_ADVERTISEMENT_INTERVAL / 0.625))
 #define ADVERTISE_INTERVAL_MAX (ADVERTISE_INTERVAL_MIN + ROUND((CONFIG_ADVERTISEMENT_INTERVAL_JITTER_MS / 0.625)))
+
 // repoting tag
 #define TAG  CONFIG_TAG
 
