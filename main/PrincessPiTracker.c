@@ -6,6 +6,7 @@
 #include "esp_log.h"        // For ESP_LOGI and other logging functions
 #include "nvs_flash.h"      // For NVS functions like nvs_flash_init
 #include "esp_err.h"        // For error handling
+#include "driver/usb_serial_jtag.h" // dis is da heacder fopr usb_serial_jtag_is_connected()
 #if CONFIG_DEEP_SLEEP_BURST_MODE
 #include "soc/soc_caps.h"  // malloc and shit if lmao
 #include "esp_sleep.h"     // For deep sleep functions
@@ -252,14 +253,22 @@ void app_main() {
     // esp32c3, esp32c6, and esp32s3
     #if defined(CONFIG_IDF_TARGET_ESP32C3) || defined(CONFIG_IDF_TARGET_ESP32C6) || defined(CONFIG_IDF_TARGET_ESP32S3)
         #if CONFIG_DEEP_SLEEP_BURST_MODE
+        // check if usb is connectedddd
+        bool usb_connected = usb_serial_jtag_is_connected();
+        if (usb_connected) {
+            ESP_LOGI(TAG, "USB Serial JTAG is connected\nDefaulting to Charging and Flashing Mode");
+            return; // exit app_main to prevent BLE initialization
+        }
+
         // Initialize sleep wait task
         ESP_LOGI(TAG, "Initializing slweep wait task");
         xTaskCreate(deep_sleep_wait_to_sleep, "deep_sleep_wait_to_sleep", 4096, NULL, 6, NULL);
 
+        // INIt timer wakeup
         ESP_LOGI(TAG, "Initializing Timer Wakeup");
         deep_sleep_register_rtc_timer_wakeup();
         #else
-        ble_init();
+        ble_init(); // initialize BLE normally without deep sleep
         #endif
 
     // esp32 classic
