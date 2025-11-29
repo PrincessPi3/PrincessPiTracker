@@ -1,16 +1,16 @@
 menu "PrincessPiTracker Config"
     config ADVERTISEMENT_INTERVAL
         int "Interval between advertisements in milliseconds"
-        default 40
+        default 100
         range 12 10240
         help
             Int number of milliseconds (ms) in between advertisements min 12 max 10240
-            40 for max delay with 10ms random
+            100 for max delay with 10ms random
             200 for deep sleep burst mode
 
     config ADVERTISEMENT_INTERVAL_JITTER_MS
         int "Max Jitter to add to Advertisement Interval in milliseconds"
-        default 0
+        default 10
         range 0 500
         help
             Int number of milliseconds (ms) max jitter to add to advertisement interval min 0 max 2000
@@ -52,7 +52,7 @@ menu "PrincessPiTracker Config"
 
     config DEEP_SLEEP_BURST_COUNT
         int "Number of Advertisements per Burst"
-        default 4
+        default 3
         range 1 100
         depends on DEEP_SLEEP_BURST_MODE
         help
