@@ -21,6 +21,13 @@ menu "PrincessPiTracker Config"
         help
            Your advertisement key, see https://github.com/leonboe1/GoogleFindMyTools
 
+    config DISABLE_USB_WHILE_CHARGING
+        bool "Disable USB Serial and Broadcasting While Charging"
+        default y
+        help
+           Enable this option to disable USB Serial and Broadcasting while charging to save power.
+
+
     config DEVICE_NAME
         string "BLE Device Name"
         default "PrincesiPiTracker"
