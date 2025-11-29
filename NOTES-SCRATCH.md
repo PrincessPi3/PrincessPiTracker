@@ -14,4 +14,7 @@
 * max usable interval 4000ms seems like
     * 2000ms seems moar stable? idk
 # Scratch
-burst-60s-200ms-10ms-3b-nousb-ant-f68889e-
+burst-60s-200ms-10ms-3b-nousb-ant-8069460-
+normal-10.230s-10ms-nousb-ant-8069460-
+burst-60s-200ms-10ms-3b-nousb-noant-8069460-
+normal-10.230s-10ms-nousb-noant-8069460-
