@@ -14,7 +14,34 @@
 * max usable interval 4000ms seems like
     * 2000ms seems moar stable? idk
 # Scratch
-burst-60s-200ms-10ms-3b-nousb-ant-8069460-
-normal-10.230s-10ms-nousb-ant-8069460-
-burst-60s-200ms-10ms-3b-nousb-noant-8069460-
-normal-10.230s-10ms-nousb-noant-8069460-
+## test protocol
+rebuildfull
+erase flash
+set setgings
+flash
+plug into usb-c meter
+measure power usage over 10 minutes (600 seconds)
+export to excel
+    name like:
+        (progress markers: b built, f flashed, m measuring, l logged, d done)
+        bfmld burst-60s-200ms-10ms-3b-nousb-ant-109f09e-
+        bfmld normal-10.230s-10ms-nousb-ant-109f09e-
+        bfmld normal-10.230s-10ms-nousb-noant-109f09e-
+        bfm burst-60s-200ms-10ms-3b-nousb-noant-109f09e-
+    next
+        burst-120s-40ms-0ms-4b-nousb-noant-109f09e-
+get values with (EXCEL paste into cell D1)
+<table border="1">
+  <tr>
+    <th>avg V</th>
+    <th>avg A</th>
+    <th>avg W</th>
+    <th>avg mW</th>
+  </tr>
+  <tr>
+    <td>=AVERAGE(B1:B1000)</td>
+    <td>=AVERAGE(C1:C1000)</td>
+    <td>=D2*E2</td>
+    <td>=F2*1000</td>
+  </tr>
+</table>
