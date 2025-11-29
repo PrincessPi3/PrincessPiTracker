@@ -1,7 +1,7 @@
 # Notes
 * using esp-idf v5.5.1 for testin
 ## Wireshark
-* filter for finding these adverts by mac is `btle.advertising_address == xx:xx:xx:xx:xx || btle.scanning_address == xx:xx:xx:xx:xx`
+* filter for finding these adverts by mac is `btle.advertising_address == xx:xx:xx:xx:xx || btle.scanning_address == xx:xx:xx:xx:xx || btle.target_address == xx:xx:xx:xx:xx`
 * filter for narrowing to without mac is `(btcommon.eir_ad.entry.type == 0x01) && (btle.advertising_header == 0x2506)`
 ## Voltage reading
 ![Wiring SDC to bat voltage to measure with ADC0](assets/read-bat-voltage-schematic.png)
@@ -29,7 +29,7 @@ export to excel
         bfmld normal-10.230s-10ms-nousb-noant-109f09e-
         bfm burst-60s-200ms-10ms-3b-nousb-noant-109f09e-
     next
-        burst-120s-40ms-0ms-4b-nousb-noant-109f09e-
+        burst-120s-40ms-0ms-4b-nousb-noant-2975c2c-
 get values with (EXCEL paste into cell D1)
 <table border="1">
   <tr>
