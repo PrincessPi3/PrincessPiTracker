@@ -30,7 +30,7 @@
 #define ADVERTISE_INTERVAL_MAX (ADVERTISE_INTERVAL_MIN + ROUND((CONFIG_ADVERTISEMENT_INTERVAL_JITTER_MS / 0.625)))
 
 // repoting tag
-#define TAG  CONFIG_TAG
+#define TAG CONFIG_TAG
 
 // module configs
 //// esp32 classic
@@ -207,13 +207,13 @@ static void deep_sleep_register_rtc_timer_wakeup(void) {
 }
 
 static void deep_sleep_wait_to_sleep() {
-    vTaskDelay(pdMS_TO_TICKS(DEEP_SLEEP_BURST_DELAY));
+    vTaskDelay(pdMS_TO_TICKS(DEEP_SLEEP_BURST_DELAY_LIVE_MS));
     ESP_LOGI(TAG, "Waited %d ms, preparing to enter deep sleep\n", DEEP_SLEEP_BURST_DELAY_LIVE_MS);
 
     ESP_LOGI(TAG, "Deiniting BTLE before deep sleep");
     ble_deinit();
 
-    ESP_LOGI(TAG, "Entering deep sleep\n\tDuration %d ms\n\tburst count %d\n\tburst delay %d ms\n", CONFIG_DEEP_SLEEP_DURATION_S * 1000, CONFIG_DEEP_SLEEP_BURST_COUNT,DEEP_SLEEP_BURST_DELAY);
+    ESP_LOGI(TAG, "Entering deep sleep\n\tDuration %d ms\n\tburst count %d\n\tburst delay %d ms\n", CONFIG_DEEP_SLEEP_DURATION_S * 1000, CONFIG_DEEP_SLEEP_BURST_COUNT, DEEP_SLEEP_BURST_DELAY_LIVE_MS);
     ESP_ERROR_CHECK(esp_sleep_enable_timer_wakeup(DEEP_SLEEP_BURST_DELAY_MICROS));
     esp_deep_sleep_start();
 }
@@ -254,6 +254,7 @@ void app_main() {
     ESP_LOGI(TAG, "Advertisement Interval Min: %d Milliseconds\n", CONFIG_ADVERTISEMENT_INTERVAL);
     ESP_LOGI(TAG, "Advertisement Interval Max: %d Milliseconds (%d ms jitter)\n", CONFIG_ADVERTISEMENT_INTERVAL + CONFIG_ADVERTISEMENT_INTERVAL_JITTER_MS, CONFIG_ADVERTISEMENT_INTERVAL_JITTER_MS);
     ESP_LOGI(TAG, "BLE Device Name: %s\n", CONFIG_DEVICE_NAME);
+    ESP_LOGI(TAG, "Burst duration %d milliseconds", DEEP_SLEEP_BURST_DELAY_LIVE_MS);
     #if CONFIG_RANDOM_MAC_ADDRESS
         ESP_LOGI(TAG, "Using Random MAC Address for advertising\n");
     #else

@@ -38,23 +38,24 @@ menu "PrincessPiTracker Config"
         default "PrincessPiTracker"
         help
            The tag used in logging messages.
+
     config RANDOM_MAC_ADDRESS
         bool "Use Random MAC Address"
         default n
         help
            Enable this option to use a random MAC address for BLE advertising instead of the public MAC address.
     
-    configT_MODE
+    config DEEP_SLEEP_BURST_MODE
         bool "Enable Deep Sleep Burst Mode"
         default y
         help
            Enable this option to wake up, send multiple advertisements in a burst, then go back to deep sleep.
 
-    configT_COUNT
+    config DEEP_SLEEP_BURST_COUNT
         int "Number of Advertisements per Burst"
         default 4
         range 1 100
-        depends onT_MODE
+        depends on DEEP_SLEEP_BURST_MODE
         help
             Int number of advertisements to send per burst min 1 max 100
 
@@ -62,7 +63,7 @@ menu "PrincessPiTracker Config"
         int "Deep Sleep Duration in seconds"
         default 120
         range 0 86400
-        depends onT_MODE
+        depends on DEEP_SLEEP_BURST_MODE
         help
             Int number of seconds (s) to deep sleep between advertisement cycles min 0 max 86400 (24 hours)
     
