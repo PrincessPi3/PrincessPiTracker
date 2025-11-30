@@ -18,7 +18,7 @@
 #include "freertos/task.h"
 
 // calculate da burst delay and burst delay microseconds
-#define DEEP_SLEEP_BURST_DELAY (CONFIG_DEEP_SLEEP_BURST_COUNT * CONFIG_ADVERTISEMENT_INTERVAL)
+#define DEEP_SLEEP_BURST_DELAY ((CONFIG_DEEP_SLEEP_BURST_COUNT * CONFIG_ADVERTISEMENT_INTERVAL) + CONFIG_ADVERTISEMENT_INTERVAL) // +CONFIG_ADVERTISEMENT_INTERVAL so the silly thing will be sure to boadcast dem all and not die before, using CONFIG_ADVERTISEMENT_INTERVAL because presumably it'll keep the extra time in rough check with the interval ig
 #define DEEP_SLEEP_BURST_DELAY_MICROS (CONFIG_DEEP_SLEEP_DURATION_S * 1000000)
 #endif
 

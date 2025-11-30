@@ -52,7 +52,7 @@ menu "PrincessPiTracker Config"
 
     config DEEP_SLEEP_BURST_COUNT
         int "Number of Advertisements per Burst"
-        default 3
+        default 4
         range 1 100
         depends on DEEP_SLEEP_BURST_MODE
         help
