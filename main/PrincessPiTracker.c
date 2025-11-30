@@ -17,8 +17,8 @@
 #include "freertos/FreeRTOS.h" // freertosbullshit
 #include "freertos/task.h"
 
-// calculate da burst delay and burst delay microseconds
-#define DEEP_SLEEP_BURST_DELAY ((CONFIG_DEEP_SLEEP_BURST_COUNT * CONFIG_ADVERTISEMENT_INTERVAL) + CONFIG_ADVERTISEMENT_INTERVAL) // +CONFIG_ADVERTISEMENT_INTERVAL so the silly thing will be sure to boadcast dem all and not die before, using CONFIG_ADVERTISEMENT_INTERVAL because presumably it'll keep the extra time in rough check with the interval ig
+// calculate da burst delay live and burst delay microseconds
+#define DEEP_SLEEP_BURST_DELAY_LIVE_MS ((CONFIG_DEEP_SLEEP_BURST_COUNT * CONFIG_ADVERTISEMENT_INTERVAL) + ((CONFIG_DEEP_SLEEP_BURST_COUNT + 1) * CONFIG_ADVERTISEMENT_INTERVAL_JITTER_MS)) // +CONFIG_ADVERTISEMENT_INTERVAL so the silly thing will be sure to boadcast dem all and not die before, using CONFIG_ADVERTISEMENT_INTERVAL because presumably it'll keep the extra time in rough check with the interval ig
 #define DEEP_SLEEP_BURST_DELAY_MICROS (CONFIG_DEEP_SLEEP_DURATION_S * 1000000)
 #endif
 
@@ -208,7 +208,7 @@ static void deep_sleep_register_rtc_timer_wakeup(void) {
 
 static void deep_sleep_wait_to_sleep() {
     vTaskDelay(pdMS_TO_TICKS(DEEP_SLEEP_BURST_DELAY));
-    ESP_LOGI(TAG, "Waited %d ms, preparing to enter deep sleep\n", DEEP_SLEEP_BURST_DELAY);
+    ESP_LOGI(TAG, "Waited %d ms, preparing to enter deep sleep\n", DEEP_SLEEP_BURST_DELAY_LIVE_MS);
 
     ESP_LOGI(TAG, "Deiniting BTLE before deep sleep");
     ble_deinit();
